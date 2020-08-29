@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "395033633604",
+    "firebase_url": "https://bookcab-e79f1.firebaseio.com",
+    "project_id": "bookcab-e79f1",
+    "storage_bucket": "bookcab-e79f1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:395033633604:android:1725cd3bcee5e61e7ead11",
+        "android_client_info": {
+          "package_name": "com.mridx.bookcab"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "395033633604-dmtqrg5ffu31cs1q213d6q38biqeon70.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mridx.bookcab",
+            "certificate_hash": "088e4d819593cc5029fe575f19977a2dc0f8259f"
+          }
+        },
+        {
+          "client_id": "395033633604-pb6vbmprt0ips50m9sli1isi58ba6qgf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIX-MHvMSqeGwG18Fs1JIjN0b2uCbehus"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "395033633604-pb6vbmprt0ips50m9sli1isi58ba6qgf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
