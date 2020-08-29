@@ -16,9 +16,12 @@ public class SplashUI extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash);
 
+        /**
+         * starting Sign up ui after 5 sec of delay to show splash
+         */
         new Handler().postDelayed((Runnable) () -> {
             startActivity(new Intent(this, SingupUI.class));
             finish();
-        }, 1000 * 3);
+        }, 1000 * 5);
     }
 }

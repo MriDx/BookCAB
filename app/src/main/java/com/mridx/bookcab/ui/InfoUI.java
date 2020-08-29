@@ -28,6 +28,9 @@ public class InfoUI extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.info_ui);
 
+        /**
+         * checking intent's extras and storing the boolean value for global access
+         */
         if (getIntent().getExtras() != null) {
             IS_DRIVER = getIntent().getExtras().getBoolean("IS_DRIVER");
         }
@@ -39,7 +42,7 @@ public class InfoUI extends AppCompatActivity {
 
         findViewById(R.id.infoSaveBtn).setOnClickListener(this::saveInfo);
 
-        if (!IS_DRIVER) {
+        if (!IS_DRIVER) { // show or hide car name and car rc input field
             carNameField.setVisibility(View.GONE);
             carRcField.setVisibility(View.GONE);
         }
@@ -55,6 +58,11 @@ public class InfoUI extends AppCompatActivity {
 
     }
 
+    /**
+     * function to save inputted data
+     *
+     * @param view
+     */
     private void saveInfo(View view) {
         String name = nameField.getText().toString().trim();
         String phone = phoneField.getText().toString().trim();
@@ -74,8 +82,8 @@ public class InfoUI extends AppCompatActivity {
             return;
         }
 
-        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance(); //firestore instance
+        FirebaseAuth auth = FirebaseAuth.getInstance(); //firebase auth instance
         FirebaseUser user = auth.getCurrentUser();
         HashMap<String, Object> data = new HashMap<>();
         data.put("name", name);
@@ -85,16 +93,24 @@ public class InfoUI extends AppCompatActivity {
             data.put("carName", carName);
             data.put("carRC", carRC);
         }
+        /**
+         * saving user data to firestore
+         * users(Collection) -> drivers/customers(Document) -> all(Collection) -> $user's_uuid(Document)
+         */
         firestore.collection("users").document(IS_DRIVER ? "drivers" : "customers").collection("all").document(user.getUid())
                 .set(data)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        finishAndStart();
+                        finishAndStart(); //on success just finishing current activity and starting the maps activity accordingly
                     }
                 });
 
     }
 
+    /**
+     * if signed in user is a driver starting DriverMapUI.class
+     * if signed in user is a driver starting MapsActivity.class
+     */
     private void finishAndStart() {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean("hasData", true);

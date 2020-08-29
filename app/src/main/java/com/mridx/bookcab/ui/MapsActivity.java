@@ -130,6 +130,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         user = auth.getCurrentUser();
         //endregion
 
+        //Checking permission
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 100);
             return;
@@ -165,26 +166,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         if (!Places.isInitialized())
             Places.initialize(this, getString(R.string.google_maps_key));
         PlacesClient placesClient = Places.createClient(this);
-
-        //region not needed
-        /*AutocompleteSupportFragment autocompleteSupportFragment = (AutocompleteSupportFragment) getSupportFragmentManager().findFragmentById(R.id.destinationSearchField);
-        autocompleteSupportFragment.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME));
-        autocompleteSupportFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
-            @Override
-            public void onPlaceSelected(@NonNull Place place) {
-                destination = place.getLatLng();
-                destinationName = place.getName();
-                //mMap.addMarker(new MarkerOptions().position(destination).title("My Destination"));
-                Toast.makeText(MapsActivity.this, place.getName(), Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onError(@NonNull Status status) {
-                Log.d("kaku", "onError: " + status.toString());
-            }
-        });*/
-        //endregion
-        //listenForDriverAcceptance();
 
     }
 
@@ -244,7 +225,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
-                    Log.d("kaku", "onDataChange: " + snapshot.getValue());
                     List<Object> data = (List<Object>) snapshot.getValue();
                     double lat = 0, lng = 0;
                     if (data.get(0) != null)
@@ -289,18 +269,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show();
                 return;
             }
-            /*fusedLocationProviderClient.getLastLocation()
-                    .addOnSuccessListener(this, location -> {
-                        // Got last known location. In some rare situations this can be null.
-                        if (location != null) {
-                            mLocation = location;
-                            if (mMap == null)
-                                return;
-                            LatLng myPlace = new LatLng(mLocation.getLatitude(), mLocation.getLongitude());
-                            mMap.addMarker(new MarkerOptions().position(myPlace).title("Marker at My place"));
-                            mMap.moveCamera(CameraUpdateFactory.newLatLng(myPlace));
-                        }
-                    });*/
             LocationRequest locationRequest = new LocationRequest();
             locationRequest
                     .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
@@ -374,7 +342,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         geoQuery.addGeoQueryEventListener(new GeoQueryEventListener() {
             @Override
             public void onKeyEntered(String key, GeoLocation location) {
-                Log.d("kaku", "onKeyEntered: " + key + " " + location.latitude + " " + location.longitude);
                 driverFound = true;
                 assignToDriver(key, location);
             }
@@ -462,12 +429,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             for (int i = 0; i < steps.length(); i++) {
                 JSONObject step = steps.getJSONObject(i);
-                /*HashMap<String, Double> hashMap = new HashMap<>();
-                hashMap.put("start_lat", step.getJSONObject("start_location").getDouble("lat"));
-                hashMap.put("stop_lat", step.getJSONObject("end_location").getDouble("lat"));
-                hashMap.put("start_lng", step.getJSONObject("start_location").getDouble("lng"));
-                hashMap.put("stop_lng", step.getJSONObject("end_location").getDouble("lng"));
-                arraySteps.add(hashMap);*/
                 List<LatLng> list = decodePoly(step.getJSONObject("polyline").getString("points"));
                 for (int k = 0; k < list.size(); k++) {
                     HashMap<String, String> hm = new HashMap<>();
@@ -532,6 +493,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         return String.valueOf(charge);
     }
 
+    /**
+     * Method available on internet to decode polyline
+     * @param encoded
+     * @return
+     */
     private List<LatLng> decodePoly(String encoded) {
 
         List<LatLng> poly = new ArrayList<LatLng>();
@@ -562,7 +528,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     (((double) lng / 1E5)));
             poly.add(p);
         }
-        Log.d("mridx", "decodePoly: " + poly.size() + " " + poly.toString());
         return poly;
     }
 
@@ -636,4 +601,5 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.moveCamera(CameraUpdateFactory.newLatLng(destination));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
     }
+
 }
