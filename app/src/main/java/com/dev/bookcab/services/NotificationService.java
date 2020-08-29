@@ -1,4 +1,4 @@
-package com.mridx.bookcab.services;
+package com.dev.bookcab.services;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -13,9 +13,9 @@ import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
-import com.mridx.bookcab.R;
-import com.mridx.bookcab.data.Customer;
-import com.mridx.bookcab.data.Driver;
+import com.dev.bookcab.R;
+import com.dev.bookcab.data.Customer;
+import com.dev.bookcab.data.Driver;
 
 public class NotificationService {
 

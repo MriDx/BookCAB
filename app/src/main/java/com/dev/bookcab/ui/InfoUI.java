@@ -1,4 +1,4 @@
-package com.mridx.bookcab.ui;
+package com.dev.bookcab.ui;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,7 +13,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.mridx.bookcab.R;
+import com.dev.bookcab.R;
 
 import java.util.HashMap;
 

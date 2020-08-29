@@ -1,4 +1,4 @@
-package com.mridx.bookcab.ui;
+package com.dev.bookcab.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,7 +7,7 @@ import android.os.Handler;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.mridx.bookcab.R;
+import com.dev.bookcab.R;
 
 public class SplashUI extends AppCompatActivity {
 

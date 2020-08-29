@@ -1,4 +1,4 @@
-package com.mridx.bookcab.ui;
+package com.dev.bookcab.ui;
 
 import android.Manifest;
 import android.content.Intent;
@@ -7,15 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
-import com.mridx.bookcab.R;
+import com.dev.bookcab.R;
 
 public class SingupUI extends AppCompatActivity {
 

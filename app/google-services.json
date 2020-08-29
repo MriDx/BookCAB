@@ -8,17 +8,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:395033633604:android:1725cd3bcee5e61e7ead11",
+        "mobilesdk_app_id": "1:395033633604:android:87a9377ad20202457ead11",
         "android_client_info": {
-          "package_name": "com.mridx.bookcab"
+          "package_name": "com.dev.bookcab"
         }
       },
       "oauth_client": [
         {
-          "client_id": "395033633604-dmtqrg5ffu31cs1q213d6q38biqeon70.apps.googleusercontent.com",
+          "client_id": "395033633604-pnvpn012h8op7u8fgmj8dgrtk0tff21p.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.mridx.bookcab",
+            "package_name": "com.dev.bookcab",
             "certificate_hash": "088e4d819593cc5029fe575f19977a2dc0f8259f"
           }
         },

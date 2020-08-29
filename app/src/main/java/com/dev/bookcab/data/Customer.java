@@ -1,4 +1,4 @@
-package com.mridx.bookcab.data;
+package com.dev.bookcab.data;
 
 public class Customer {
 

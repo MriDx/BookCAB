@@ -1,4 +1,4 @@
-package com.mridx.bookcab;
+package com.dev.bookcab;
 
 import org.junit.Test;
 

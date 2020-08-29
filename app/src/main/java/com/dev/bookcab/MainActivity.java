@@ -1,11 +1,11 @@
-package com.mridx.bookcab;
+package com.dev.bookcab;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.mridx.bookcab.ui.MapsActivity;
+import com.dev.bookcab.ui.MapsActivity;
 
 public class MainActivity extends AppCompatActivity {
 
